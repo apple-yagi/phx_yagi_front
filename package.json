@@ -24,6 +24,7 @@
   "devDependencies": {
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
-    "babel-plugin-emotion": "^11.0.0"
+    "babel-plugin-emotion": "^11.0.0",
+    "styled-breakpoints": "^10.0.1"
   }
 }
