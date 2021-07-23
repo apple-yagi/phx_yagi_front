@@ -1,34 +1,29 @@
 import { GetStaticProps, NextPage } from "next";
-import styled from "@emotion/styled";
 import { Container } from "@/styles/common";
-
-type Tag = {
-  id: string;
-  name: string;
-  icon_path: string;
-};
+import { Article } from "@/types";
 
 type Props = {
-  tags: Tag[];
+  articles: Article[];
 };
 
 export const getStaticProps: GetStaticProps = async context => {
-  const tags = await (await fetch("http://localhost:4000/api/v1/tags")).json();
+  const articles: Article[] = await (
+    await fetch("http://localhost:4000/api/v1/articles")
+  ).json();
   return {
     props: {
-      tags
+      articles
     }
   };
 };
 
-const TopPage: NextPage<Props> = ({ tags }) => {
+const TopPage: NextPage<Props> = ({ articles }) => {
   return (
     <Container>
       <ul>
-        {tags.map(tag => (
-          <li key={tag.id}>
-            <img className='inline h-16 w-16 mr-2 mb-5' src={tag.icon_path} />
-            <span>{tag.name}</span>
+        {articles.map(article => (
+          <li key={article.id}>
+            <span>{article.title}</span>
           </li>
         ))}
       </ul>

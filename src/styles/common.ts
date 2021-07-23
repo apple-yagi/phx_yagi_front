@@ -11,10 +11,6 @@ export const Container = styled.div`
   }
 
   ${up("md")} {
-    padding: 0 30px;
-  }
-
-  ${up("lg")} {
-    padding: 0;
+    padding: 0 40px;
   }
 `;
