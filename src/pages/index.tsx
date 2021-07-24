@@ -15,6 +15,18 @@ const Root = styled.section`
   margin: 0 auto;
 `;
 
+const ArticleList = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+`;
+
+const SectionTitle = styled.h3`
+  font-size: 36px;
+  font-weight: bold;
+  margin: 40px 0 15px;
+`;
+
 const article__card = css`
   width: 100%;
 
@@ -37,10 +49,17 @@ export const getStaticProps: GetStaticProps = async context => {
 const TopPage: NextPage<Props> = ({ articles }) => {
   return (
     <Root>
-      <Container className='justify-between'>
-        {articles.map(article => (
-          <ArticleCard key={article.id} css={article__card} article={article} />
-        ))}
+      <Container>
+        <SectionTitle>Articles</SectionTitle>
+        <ArticleList>
+          {articles.map(article => (
+            <ArticleCard
+              key={article.id}
+              css={article__card}
+              article={article}
+            />
+          ))}
+        </ArticleList>
       </Container>
     </Root>
   );

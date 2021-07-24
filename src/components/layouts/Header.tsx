@@ -14,6 +14,7 @@ const Root = styled.header`
 const HeaderContainer = styled(Container)`
   height: 100%;
   margin: 0 auto;
+
   ${up("lg")} {
     max-width: 1126px;
   }

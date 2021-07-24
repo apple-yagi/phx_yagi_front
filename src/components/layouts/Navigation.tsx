@@ -39,7 +39,7 @@ export const Navigation = (): JSX.Element => {
         <NavList className='space-x-3'>
           <NavItem>
             <Link href='/'>
-              <a>Home</a>
+              <a>Trending</a>
             </Link>
           </NavItem>
           <NavItem>
