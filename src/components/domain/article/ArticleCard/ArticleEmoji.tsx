@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import Link from "next/link";
+import { useAnimal } from "~/hooks/useAnimal";
 
 type Props = {
   userId: string;
@@ -21,10 +22,12 @@ const Emoji = styled.span`
 `;
 
 export const ArticleEmoji = ({ userId, articleId }: Props): JSX.Element => {
+  const { animal } = useAnimal();
+
   return (
     <Link href={`/${userId}/articles/${articleId}`}>
       <EmojiLink>
-        <Emoji>🦁</Emoji>
+        <Emoji>{animal}</Emoji>
       </EmojiLink>
     </Link>
   );
