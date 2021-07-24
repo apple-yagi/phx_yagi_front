@@ -2,8 +2,8 @@ import styled from "@emotion/styled";
 import { up } from "styled-breakpoints";
 
 export const Container = styled.div`
-  max-width: 1126px;
-  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
   padding: 0 15px;
 
   ${up("sm")} {
@@ -11,6 +11,6 @@ export const Container = styled.div`
   }
 
   ${up("md")} {
-    padding: 0 40px;
+    padding: 0 15px;
   }
 `;

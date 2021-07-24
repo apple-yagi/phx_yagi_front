@@ -1,10 +1,27 @@
 import { GetStaticProps, NextPage } from "next";
-import { Container } from "@/styles/common";
-import { Article } from "@/types";
+import { Container } from "~/styles/common";
+import { Article } from "~/types";
+import styled from "@emotion/styled";
+import { ArticleCard } from "~/components/domain/article/ArticleCard";
+import { css } from "@emotion/react";
+import { md } from "~/styles/vars";
 
 type Props = {
   articles: Article[];
 };
+
+const Root = styled.section`
+  max-width: 960px;
+  margin: 0 auto;
+`;
+
+const article__card = css`
+  width: 100%;
+
+  @media (min-width: ${md}) {
+    width: 47%;
+  }
+`;
 
 export const getStaticProps: GetStaticProps = async context => {
   const articles: Article[] = await (
@@ -19,15 +36,13 @@ export const getStaticProps: GetStaticProps = async context => {
 
 const TopPage: NextPage<Props> = ({ articles }) => {
   return (
-    <Container>
-      <ul>
+    <Root>
+      <Container className='justify-between'>
         {articles.map(article => (
-          <li key={article.id}>
-            <span>{article.title}</span>
-          </li>
+          <ArticleCard key={article.id} css={article__card} article={article} />
         ))}
-      </ul>
-    </Container>
+      </Container>
+    </Root>
   );
 };
 

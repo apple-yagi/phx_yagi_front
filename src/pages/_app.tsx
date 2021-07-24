@@ -1,7 +1,13 @@
 import Head from "next/head";
-import { ThemeProvider } from "@emotion/react";
+import { css, ThemeProvider } from "@emotion/react";
 import { theme } from "@/styles/vars";
 import "tailwindcss/tailwind.css";
+
+const global = css`
+  a {
+    cursor: pointer;
+  }
+`;
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -10,7 +16,9 @@ function MyApp({ Component, pageProps }) {
         <title>Next App</title>
       </Head>
       <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
+        <div className='bg-gray-100' css={global}>
+          <Component {...pageProps} />
+        </div>
       </ThemeProvider>
     </>
   );

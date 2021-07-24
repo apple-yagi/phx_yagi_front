@@ -1,7 +1,11 @@
+export const sm = "480px";
+export const md = "768px";
+export const lg = "1126px";
+
 export const theme = {
   breakpoints: {
-    sm: "500px",
-    md: "960px",
-    lg: "1126px"
+    sm: sm,
+    md: md,
+    lg: lg
   }
 };
