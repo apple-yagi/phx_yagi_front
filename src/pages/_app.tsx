@@ -1,13 +1,10 @@
 import Head from "next/head";
-import { css, ThemeProvider } from "@emotion/react";
-import { theme } from "@/styles/vars";
+import { ThemeProvider } from "@emotion/react";
+import { theme } from "~/styles/vars";
+import { global } from "~/styles/global";
+import { Header } from "~/components/layouts/Header";
 import "tailwindcss/tailwind.css";
-
-const global = css`
-  a {
-    cursor: pointer;
-  }
-`;
+import { Navigation } from "~/components/layouts/Navigation";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -16,7 +13,9 @@ function MyApp({ Component, pageProps }) {
         <title>Next App</title>
       </Head>
       <ThemeProvider theme={theme}>
-        <div className='bg-gray-100' css={global}>
+        <Header />
+        <Navigation />
+        <div className='bg-green-50' css={global}>
           <Component {...pageProps} />
         </div>
       </ThemeProvider>
