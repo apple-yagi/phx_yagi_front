@@ -1,24 +1,20 @@
-import { GetStaticProps, NextPage } from "next";
+import { GetServerSideProps, NextPage } from "next";
 import { Container } from "~/styles/common";
-import { Article } from "~/types";
+import { Article, User } from "~/types";
 import styled from "@emotion/styled";
-import { ArticleCard } from "~/components/domain/article/ArticleCard";
-import { css } from "@emotion/react";
-import { md } from "~/styles/vars";
+import { ArticleList } from "~/components/domain/article/ArticleList";
+import Link from "next/link";
 
 type Props = {
   articles: Article[];
+  users: User[];
 };
 
-const Root = styled.section`
+const Root = styled.div``;
+
+const CustomContainer = styled(Container)`
   max-width: 960px;
   margin: 0 auto;
-`;
-
-const ArticleList = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
 `;
 
 const SectionTitle = styled.h3`
@@ -27,40 +23,52 @@ const SectionTitle = styled.h3`
   margin: 40px 0 15px;
 `;
 
-const article__card = css`
-  width: 100%;
+const MoreLink = styled.a`
+  margin: 20px auto;
+  font-size: 16px;
+  font-weight: bold;
+  color: #9ca3af;
+  transition: 0.3s color;
 
-  @media (min-width: ${md}) {
-    width: 47%;
+  :hover {
+    color: #4b5563;
   }
 `;
 
-export const getStaticProps: GetStaticProps = async context => {
-  const articles: Article[] = await (
-    await fetch("http://localhost:4000/api/v1/articles")
-  ).json();
+export const getServerSideProps: GetServerSideProps = async context => {
+  const [articlesRes, usersRes] = await Promise.all([
+    fetch("http://localhost:4000/api/v1/articles"),
+    fetch("http://localhost:4000/api/v1/users")
+  ]);
+  const [articles, users] = await Promise.all([
+    articlesRes.json(),
+    usersRes.json()
+  ]);
   return {
     props: {
-      articles
+      articles,
+      users
     }
   };
 };
 
-const TopPage: NextPage<Props> = ({ articles }) => {
+const TopPage: NextPage<Props> = ({ articles, users }) => {
   return (
     <Root>
-      <Container>
-        <SectionTitle>Articles</SectionTitle>
-        <ArticleList>
-          {articles.map(article => (
-            <ArticleCard
-              key={article.id}
-              css={article__card}
-              article={article}
-            />
-          ))}
-        </ArticleList>
-      </Container>
+      <div className='bg-green-100'>
+        <CustomContainer>
+          <SectionTitle>Articles</SectionTitle>
+          <ArticleList articles={articles} />
+          <Link href='/articles'>
+            <MoreLink>記事をもっと見る 👉</MoreLink>
+          </Link>
+        </CustomContainer>
+      </div>
+      <div className='bg-gray-100 mt-1'>
+        <CustomContainer>
+          <SectionTitle>Users</SectionTitle>
+        </CustomContainer>
+      </div>
     </Root>
   );
 };
