@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import tw, { styled } from "twin.macro";
 import Link from "next/link";
 import { up } from "styled-breakpoints";
 import { Container } from "~/styles/common";
@@ -19,16 +19,17 @@ const NavContainer = styled(Container)`
 
 const NavList = styled.ul`
   display: flex;
+  ${tw`space-x-3`}
 `;
 
 const NavItem = styled.li`
   font-weight: bold;
-  color: #93a5b1;
-  transition: 0.3s color;
   font-size: 18px;
+  ${tw`text-gray-400`}
+  transition: 0.3s color;
 
   :hover {
-    color: black;
+    ${tw`text-gray-700`}
   }
 `;
 
@@ -36,7 +37,7 @@ export const Navigation = (): JSX.Element => {
   return (
     <Root>
       <NavContainer>
-        <NavList className='space-x-3'>
+        <NavList>
           <NavItem>
             <Link href='/'>
               <a>Trending</a>

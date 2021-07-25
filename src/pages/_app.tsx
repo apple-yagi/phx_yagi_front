@@ -1,4 +1,5 @@
 import "tailwindcss/tailwind.css";
+import { GlobalStyles } from "twin.macro";
 import Head from "next/head";
 import { ThemeProvider } from "@emotion/react";
 import { theme } from "~/styles/vars";
@@ -12,6 +13,7 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <title>Next App</title>
       </Head>
+      <GlobalStyles />
       <ThemeProvider theme={theme}>
         <Header />
         <Navigation />

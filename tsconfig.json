@@ -19,6 +19,7 @@
       "@/*": ["./src/*"]
     }
   },
+  "files": ["src/types/twin.d.ts"],
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules", ".next", "out"]
 }

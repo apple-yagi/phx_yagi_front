@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import styled from "@emotion/styled";
+import tw, { styled } from "twin.macro";
 import { Tag } from "~/types";
 
 type Props = {
@@ -10,11 +10,12 @@ type Props = {
 const Root = styled.ul`
   display: flex;
   flex-wrap: wrap;
+  ${tw`space-x-3`}
 `;
 
 export const TagList = ({ tags }: Props): JSX.Element => {
   return (
-    <Root className='space-x-3'>
+    <Root>
       {tags.map(tag => (
         <li key={tag.id}>
           <Link href={`/tags/${tag.id}`}>

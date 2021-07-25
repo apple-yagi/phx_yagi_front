@@ -1,7 +1,7 @@
 import { GetServerSideProps, NextPage } from "next";
+import tw, { styled } from "twin.macro";
 import { Container } from "~/styles/common";
 import { Article, User } from "~/types";
-import styled from "@emotion/styled";
 import { ArticleList } from "~/components/domain/article/ArticleList";
 import Link from "next/link";
 
@@ -27,11 +27,11 @@ const MoreLink = styled.a`
   margin: 20px auto;
   font-size: 16px;
   font-weight: bold;
-  color: #9ca3af;
+  ${tw`text-gray-400`}
   transition: 0.3s color;
 
   :hover {
-    color: #4b5563;
+    ${tw`text-gray-600`};
   }
 `;
 

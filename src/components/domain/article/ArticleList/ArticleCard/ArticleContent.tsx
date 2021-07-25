@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import styled from "@emotion/styled";
+import tw, { styled } from "twin.macro";
 import { Article } from "~/types";
 import { css } from "@emotion/react";
 
@@ -11,6 +11,7 @@ type Props = {
 const Root = styled.div`
   width: calc(100% - 108px);
   padding: 0 20px;
+  ${tw`space-y-5`}
 `;
 
 const ArticleTitle = styled.h3`
@@ -26,7 +27,7 @@ const ArticleAuthor = styled.div`
 
 export const ArticleContent = ({ article }: Props): JSX.Element => {
   return (
-    <Root className='space-y-5'>
+    <Root>
       <Link href={`/${article.user.id}/articles/${article.id}`}>
         <a>
           <ArticleTitle>{article.title}</ArticleTitle>
