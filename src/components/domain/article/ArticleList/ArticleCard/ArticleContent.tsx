@@ -15,9 +15,10 @@ const Root = styled.div`
 `;
 
 const ArticleTitle = styled.h3`
-  font-size: 1.6rem;
+  font-size: 18px;
   font-weight: bold;
-  margin-bottom: 10px;
+  ${tw`text-gray-800`}
+  margin-bottom: 7px;
 `;
 
 const ArticleAuthor = styled.div`
@@ -28,16 +29,16 @@ const ArticleAuthor = styled.div`
 export const ArticleContent = ({ article }: Props): JSX.Element => {
   return (
     <Root>
-      <Link href={`/${article.user.id}/articles/${article.id}`}>
+      <Link href={`/${article.user.name}/articles/${article.id}`}>
         <a>
           <ArticleTitle>{article.title}</ArticleTitle>
         </a>
       </Link>
-      <Link href={`/${article.user.id}`}>
+      <Link href={`/${article.user.name}`}>
         <a>
           <ArticleAuthor>
             <Image
-              src='/img/no_image.png'
+              src={article.user.photoURL}
               alt={article.user.name}
               width={34}
               height={34}
