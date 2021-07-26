@@ -1,13 +1,12 @@
 import { GetServerSideProps, NextPage } from "next";
 import tw, { styled } from "twin.macro";
 import { Container } from "~/styles/common";
-import { Article, User } from "~/types";
+import { Article } from "~/types";
 import { ArticleList } from "~/components/domain/article/ArticleList";
 import Link from "next/link";
 
 type Props = {
   articles: Article[];
-  users: User[];
 };
 
 const Root = styled.div``;
@@ -36,23 +35,17 @@ const MoreLink = styled.a`
 `;
 
 export const getServerSideProps: GetServerSideProps = async context => {
-  const [articlesRes, usersRes] = await Promise.all([
-    fetch("http://localhost:4000/api/v1/articles"),
-    fetch("http://localhost:4000/api/v1/users")
-  ]);
-  const [articles, users] = await Promise.all([
-    articlesRes.json(),
-    usersRes.json()
-  ]);
+  const articles = await (
+    await fetch("http://localhost:4000/api/v1/articles")
+  ).json();
   return {
     props: {
-      articles,
-      users
+      articles
     }
   };
 };
 
-const TopPage: NextPage<Props> = ({ articles, users }) => {
+const TopPage: NextPage<Props> = ({ articles }) => {
   return (
     <Root>
       <div className='bg-green-100'>
@@ -62,11 +55,6 @@ const TopPage: NextPage<Props> = ({ articles, users }) => {
           <Link href='/articles'>
             <MoreLink>記事をもっと見る 👉</MoreLink>
           </Link>
-        </CustomContainer>
-      </div>
-      <div className='bg-gray-100 mt-1'>
-        <CustomContainer>
-          <SectionTitle>Users</SectionTitle>
         </CustomContainer>
       </div>
     </Root>
