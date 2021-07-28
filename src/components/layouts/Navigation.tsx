@@ -21,7 +21,7 @@ const NavContainer = styled(Container)`
 
 const NavList = styled.ul`
   display: flex;
-  ${tw`space-x-3`}
+  ${tw`space-x-6`}
 `;
 
 const NavItem = styled.li`
