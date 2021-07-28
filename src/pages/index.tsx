@@ -14,12 +14,13 @@ const Root = styled.div``;
 const CustomContainer = styled(Container)`
   max-width: 960px;
   margin: 0 auto;
+  padding-top: 40px;
 `;
 
 const SectionTitle = styled.h3`
   font-size: 36px;
   font-weight: bold;
-  margin: 40px 0 15px;
+  margin-bottom: 15px;
 `;
 
 const MoreLink = styled.a`
