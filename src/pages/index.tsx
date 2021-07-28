@@ -4,6 +4,7 @@ import { Container } from "~/styles/common";
 import { Article } from "~/types";
 import { ArticleList } from "~/components/domain/article/ArticleList";
 import Link from "next/link";
+import { up } from "styled-breakpoints";
 
 type Props = {
   articles: Article[];
@@ -11,16 +12,24 @@ type Props = {
 
 const Root = styled.div``;
 
+const ArticlesSection = styled.section`
+  padding-top: 40px;
+  ${tw`bg-green-100`}
+`;
+
 const CustomContainer = styled(Container)`
   max-width: 960px;
   margin: 0 auto;
-  padding-top: 40px;
 `;
 
 const SectionTitle = styled.h3`
-  font-size: 36px;
+  font-size: 32px;
   font-weight: bold;
   margin-bottom: 15px;
+
+  ${up("sm")} {
+    font-size: 36px;
+  }
 `;
 
 const MoreLink = styled.a`
@@ -49,7 +58,7 @@ export const getServerSideProps: GetServerSideProps = async context => {
 const TopPage: NextPage<Props> = ({ articles }) => {
   return (
     <Root>
-      <div className='bg-green-100'>
+      <ArticlesSection>
         <CustomContainer>
           <SectionTitle>Articles</SectionTitle>
           <ArticleList articles={articles} />
@@ -57,7 +66,7 @@ const TopPage: NextPage<Props> = ({ articles }) => {
             <MoreLink>記事をもっと見る 👉</MoreLink>
           </Link>
         </CustomContainer>
-      </div>
+      </ArticlesSection>
     </Root>
   );
 };

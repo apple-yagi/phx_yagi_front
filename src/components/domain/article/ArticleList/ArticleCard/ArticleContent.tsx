@@ -3,22 +3,31 @@ import Image from "next/image";
 import tw, { styled } from "twin.macro";
 import { Article } from "~/types";
 import { css } from "@emotion/react";
+import { up } from "styled-breakpoints";
 
 type Props = {
   article: Article;
 };
 
 const Root = styled.div`
-  width: calc(100% - 108px);
+  width: 100%;
   padding: 0 20px;
   ${tw`space-y-5`}
+
+  ${up("sm")} {
+    width: calc(100% - 108px);
+  }
 `;
 
 const ArticleTitle = styled.h3`
-  font-size: 18px;
+  font-size: 15px;
   font-weight: bold;
   ${tw`text-gray-800`}
   margin-bottom: 7px;
+
+  ${up("sm")} {
+    font-size: 18px;
+  }
 `;
 
 const ArticleAuthor = styled.div`
