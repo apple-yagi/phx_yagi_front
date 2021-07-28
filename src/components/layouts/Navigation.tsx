@@ -1,7 +1,9 @@
 import tw, { styled } from "twin.macro";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { up } from "styled-breakpoints";
 import { Container } from "~/styles/common";
+import { css } from "@emotion/react";
 
 const Root = styled.nav`
   width: 100%;
@@ -33,17 +35,25 @@ const NavItem = styled.li`
   }
 `;
 
+const linkActive = css`
+  ${tw`text-gray-700 border-b-2 border-gray-700`}
+`;
+
 export const Navigation = (): JSX.Element => {
+  const router = useRouter();
+  const isTopPage = router.pathname === "/";
+  const isArticlesPage = router.pathname.indexOf("/articles") === 0;
+
   return (
     <Root>
       <NavContainer>
         <NavList>
-          <NavItem>
+          <NavItem css={isTopPage && linkActive}>
             <Link href='/'>
-              <a>Trending</a>
+              <a>Top</a>
             </Link>
           </NavItem>
-          <NavItem>
+          <NavItem css={isArticlesPage && linkActive}>
             <Link href='/articles'>
               <a>Articles</a>
             </Link>
