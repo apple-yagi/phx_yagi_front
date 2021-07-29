@@ -2,7 +2,7 @@ import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { md } from "~/styles/vars";
 import { Article } from "~/types";
-import { ArticleCard } from "./ArticleCard";
+import { ArticleItem } from "./ArticleItem";
 
 type Props = {
   articles: Article[];
@@ -26,7 +26,7 @@ export const ArticleList = ({ articles }: Props): JSX.Element => {
   return (
     <Root>
       {articles.map(article => (
-        <ArticleCard key={article.id} css={article__card} article={article} />
+        <ArticleItem key={article.id} css={article__card} article={article} />
       ))}
     </Root>
   );

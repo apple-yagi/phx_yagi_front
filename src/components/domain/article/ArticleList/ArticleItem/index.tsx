@@ -13,7 +13,7 @@ const Root = styled.article`
   padding: 15px 0;
 `;
 
-export const ArticleCard = ({ article, className }: Props): JSX.Element => {
+export const ArticleItem = ({ article, className }: Props): JSX.Element => {
   return (
     <Root className={className}>
       <ArticleEmoji userId={article.user.id} articleId={article.id} />
