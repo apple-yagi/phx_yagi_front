@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import tw, { styled } from "twin.macro";
 import { Article } from "~/types";
-import { css } from "@emotion/react";
 import { up } from "styled-breakpoints";
 
 type Props = {
@@ -35,6 +34,19 @@ const ArticleAuthor = styled.div`
   align-items: center;
 `;
 
+const AuthorContainer = styled.div`
+  ${tw`pl-3 flex flex-col`}
+`;
+
+const AuthorName = styled.span`
+  font-size: 12.5px;
+`;
+
+const ArticleCreatedAt = styled.time`
+  font-size: 11.5px;
+  ${tw`text-gray-500`}
+`;
+
 export const ArticleContent = ({ article }: Props): JSX.Element => {
   return (
     <Root>
@@ -52,21 +64,10 @@ export const ArticleContent = ({ article }: Props): JSX.Element => {
               width={34}
               height={34}
             />
-            <div className='pl-3 flex flex-col'>
-              <span
-                css={css`
-                  font-size: 12.5px;
-                `}>
-                {article.user.name}
-              </span>
-              <time
-                className='text-gray-500'
-                css={css`
-                  font-size: 11.5px;
-                `}>
-                {article.createdAt}
-              </time>
-            </div>
+            <AuthorContainer>
+              <AuthorName>{article.user.name}</AuthorName>
+              <ArticleCreatedAt>{article.createdAt}</ArticleCreatedAt>
+            </AuthorContainer>
           </ArticleAuthor>
         </a>
       </Link>
