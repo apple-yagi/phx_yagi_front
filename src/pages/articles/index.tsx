@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
-import { NextPage } from "next";
+import { GetServerSideProps, NextPage } from "next";
 import { up } from "styled-breakpoints";
+import { ArticleCard } from "~/components/domain/article/ArticleCard";
 import { Container } from "~/styles/common";
 import { Article } from "~/types";
 
@@ -42,7 +43,23 @@ const SectionTitle = styled.h3`
   }
 `;
 
-const ArticlesPage: NextPage<Props> = () => {
+const GridContainer = styled.div`
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1.8em 1.7em;
+`;
+
+export const getServerSideProps: GetServerSideProps = async context => {
+  const articles = await (
+    await fetch("http://localhost:4000/api/v1/articles")
+  ).json();
+  return {
+    props: {
+      articles
+    }
+  };
+};
+
+const ArticlesPage: NextPage<Props> = ({ articles }) => {
   return (
     <Root>
       <CustomContainer>
@@ -52,6 +69,11 @@ const ArticlesPage: NextPage<Props> = () => {
         </div>
         <ArticlesSection>
           <SectionTitle>Featured</SectionTitle>
+          <GridContainer>
+            {articles.map(article => (
+              <ArticleCard key={article.id} article={article} />
+            ))}
+          </GridContainer>
         </ArticlesSection>
       </CustomContainer>
     </Root>
