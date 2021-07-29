@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { GetServerSideProps, NextPage } from "next";
 import { up } from "styled-breakpoints";
+import tw from "twin.macro";
 import { ArticleCard } from "~/components/domain/article/ArticleCard";
 import { Container } from "~/styles/common";
 import { Article } from "~/types";
@@ -44,8 +45,7 @@ const SectionTitle = styled.h3`
 `;
 
 const GridContainer = styled.div`
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 1.8em 1.7em;
+  ${tw`flex flex-wrap space-x-5`}
 `;
 
 export const getServerSideProps: GetServerSideProps = async context => {
