@@ -2,6 +2,7 @@ import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import Image from "next/image";
 import Link from "next/link";
+import { up } from "styled-breakpoints";
 import tw from "twin.macro";
 import { useAnimal } from "~/hooks/useAnimal";
 import { Article } from "~/types";
@@ -20,6 +21,14 @@ const Root = styled.article`
   box-shadow: 0 3px 6px -2px rgb(0 10 60 / 20%);
 `;
 
+const ArticleMainLink = styled.a`
+  display: block;
+  flex: 1 1;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0%;
+`;
+
 const EmojiContainer = styled.div`
   padding: 16px 0;
   font-size: 46px;
@@ -29,6 +38,11 @@ const EmojiContainer = styled.div`
 
 const TitleContainer = styled.div`
   padding: 10px 14px;
+`;
+
+const ArticleTitle = styled.h3`
+  font-size: 16px;
+  font-weight: bold;
 `;
 
 const AuthorContainer = styled.div`
@@ -52,14 +66,14 @@ export const ArticleCard = ({ article, className }: Props): JSX.Element => {
   return (
     <Root className={className}>
       <Link href={`/${article.user.id}/articles/${article.id}`}>
-        <a className='block'>
+        <ArticleMainLink>
           <EmojiContainer>
             <span>{animal}</span>
           </EmojiContainer>
           <TitleContainer>
-            <h3>{article.title}</h3>
+            <ArticleTitle>{article.title}</ArticleTitle>
           </TitleContainer>
-        </a>
+        </ArticleMainLink>
       </Link>
       <Link href={`/${article.user.name}`}>
         <a className='block'>

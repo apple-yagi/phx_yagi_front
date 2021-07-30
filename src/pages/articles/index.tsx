@@ -45,7 +45,16 @@ const SectionTitle = styled.h3`
 `;
 
 const GridContainer = styled.div`
-  ${tw`flex flex-wrap space-x-5`}
+  display: grid;
+  grid-template-columns: 100%;
+
+  ${up("sm")} {
+    grid-template-columns: 50% 50%;
+  }
+
+  ${up("lg")} {
+    grid-template-columns: 33% 33% 33%;
+  }
 `;
 
 export const getServerSideProps: GetServerSideProps = async context => {
