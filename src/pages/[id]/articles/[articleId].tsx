@@ -7,8 +7,10 @@ type Props = {
 };
 
 export const getServerSideProps: GetServerSideProps = async context => {
-  const { articleId } = context.query;
-  const res = await fetch(`http://localhost:4000/api/v1/articles/${articleId}`);
+  const { id, articleId } = context.query;
+  const res = await fetch(
+    `http://localhost:4000/api/v1/users/${id}/articles/${articleId}`
+  );
   if (res.status !== 200) {
     return {
       notFound: true

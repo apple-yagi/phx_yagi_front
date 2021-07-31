@@ -17,7 +17,7 @@ export const getStaticProps: GetStaticProps = async context => {
   };
 };
 
-const TopPage: NextPage<Props> = ({ tags }) => {
+const TagsPage: NextPage<Props> = ({ tags }) => {
   return (
     <Container>
       <ul>
@@ -32,4 +32,4 @@ const TopPage: NextPage<Props> = ({ tags }) => {
   );
 };
 
-export default TopPage;
+export default TagsPage;

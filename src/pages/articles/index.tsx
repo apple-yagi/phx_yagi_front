@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { GetServerSideProps, NextPage } from "next";
 import { up } from "styled-breakpoints";
 import { ArticleCard } from "~/components/domain/article/ArticleCard";
-import { Container } from "~/styles/common";
+import { Container, GridContainer } from "~/styles/common";
 import { Article } from "~/types";
 
 type Props = {
@@ -40,19 +40,6 @@ const SectionTitle = styled.h3`
 
   ${up("md")} {
     font-size: 36px;
-  }
-`;
-
-const GridContainer = styled.div`
-  display: grid;
-  grid-template-columns: 100%;
-
-  ${up("sm")} {
-    grid-template-columns: 50% 50%;
-  }
-
-  ${up("lg")} {
-    grid-template-columns: 33% 33% 33%;
   }
 `;
 

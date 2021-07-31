@@ -22,4 +22,5 @@ export type Tag = {
   id: string;
   name: string;
   icon_path: string;
+  articles: Article[];
 };

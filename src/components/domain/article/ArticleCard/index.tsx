@@ -17,6 +17,7 @@ const Root = styled.article`
   overflow: hidden;
   margin: 15px;
   box-shadow: 0 3px 6px -2px rgb(0 10 60 / 20%);
+  background-color: white;
 `;
 
 const ArticleMainLink = styled.a`

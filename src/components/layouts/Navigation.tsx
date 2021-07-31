@@ -44,6 +44,7 @@ export const Navigation = (): JSX.Element => {
   const router = useRouter();
   const isTopPage = router.pathname === "/";
   const isArticlesPage = router.pathname.indexOf("/articles") === 0;
+  const isTagsPage = router.pathname.indexOf("/tags") === 0;
 
   return (
     <Root>
@@ -57,6 +58,11 @@ export const Navigation = (): JSX.Element => {
           <NavItem css={isArticlesPage && linkActive}>
             <Link href='/articles'>
               <a>Articles</a>
+            </Link>
+          </NavItem>
+          <NavItem css={isTagsPage && linkActive}>
+            <Link href='/tags'>
+              <a>Tags</a>
             </Link>
           </NavItem>
         </NavList>

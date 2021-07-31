@@ -14,3 +14,16 @@ export const Container = styled.div`
     padding: 0 15px;
   }
 `;
+
+export const GridContainer = styled.div`
+  display: grid;
+  grid-template-columns: 100%;
+
+  ${up("sm")} {
+    grid-template-columns: 50% 50%;
+  }
+
+  ${up("lg")} {
+    grid-template-columns: 33% 33% 33%;
+  }
+`;
