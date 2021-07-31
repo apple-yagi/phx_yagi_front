@@ -1,8 +1,6 @@
-import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import Image from "next/image";
 import Link from "next/link";
-import { up } from "styled-breakpoints";
 import tw from "twin.macro";
 import { useAnimal } from "~/hooks/useAnimal";
 import { Article } from "~/types";
@@ -45,6 +43,15 @@ const ArticleTitle = styled.h3`
   font-weight: bold;
 `;
 
+const TagList = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2px 16px 0;
+  ${tw`space-x-2`}
+`;
+
+const TagItem = styled.li``;
+
 const AuthorContainer = styled.div`
   padding: 10px 14px;
   display: flex;
@@ -75,6 +82,22 @@ export const ArticleCard = ({ article, className }: Props): JSX.Element => {
           </TitleContainer>
         </ArticleMainLink>
       </Link>
+      <TagList>
+        {article.tags.map(tag => (
+          <TagItem>
+            <Link href={`/tags/${tag.id}`}>
+              <a>
+                <Image
+                  src={tag.icon_path}
+                  alt={tag.name}
+                  width={20}
+                  height={20}
+                />
+              </a>
+            </Link>
+          </TagItem>
+        ))}
+      </TagList>
       <Link href={`/${article.user.name}`}>
         <a className='block'>
           <AuthorContainer>

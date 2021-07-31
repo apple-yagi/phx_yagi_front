@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import { GetServerSideProps, NextPage } from "next";
 import { up } from "styled-breakpoints";
-import tw from "twin.macro";
 import { ArticleCard } from "~/components/domain/article/ArticleCard";
 import { Container } from "~/styles/common";
 import { Article } from "~/types";
