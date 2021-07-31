@@ -16,7 +16,7 @@ const Root = styled.article`
 export const ArticleItem = ({ article, className }: Props): JSX.Element => {
   return (
     <Root className={className}>
-      <ArticleEmoji userId={article.user.id} articleId={article.id} />
+      <ArticleEmoji username={article.user.name} articleId={article.id} />
       <ArticleContent article={article} />
     </Root>
   );

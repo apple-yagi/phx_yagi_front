@@ -4,7 +4,7 @@ import { up } from "styled-breakpoints";
 import { useAnimal } from "~/hooks/useAnimal";
 
 type Props = {
-  userId: string;
+  username: string;
   articleId: string;
 };
 
@@ -27,11 +27,11 @@ const Emoji = styled.span`
   font-size: 42px;
 `;
 
-export const ArticleEmoji = ({ userId, articleId }: Props): JSX.Element => {
+export const ArticleEmoji = ({ username, articleId }: Props): JSX.Element => {
   const { animal } = useAnimal();
 
   return (
-    <Link href={`/${userId}/articles/${articleId}`}>
+    <Link href={`/${username}/articles/${articleId}`}>
       <EmojiLink>
         <Emoji>{animal}</Emoji>
       </EmojiLink>

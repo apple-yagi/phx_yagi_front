@@ -72,7 +72,7 @@ export const ArticleCard = ({ article, className }: Props): JSX.Element => {
 
   return (
     <Root className={className}>
-      <Link href={`/${article.user.id}/articles/${article.id}`}>
+      <Link href={`/${article.user.name}/articles/${article.id}`}>
         <ArticleMainLink>
           <EmojiContainer>
             <span>{animal}</span>
