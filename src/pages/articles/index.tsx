@@ -1,8 +1,7 @@
 import styled from "@emotion/styled";
 import { GetServerSideProps, NextPage } from "next";
-import { up } from "styled-breakpoints";
 import { ArticleCard } from "~/components/domain/article/ArticleCard";
-import { Container, GridContainer } from "~/styles/common";
+import { Container, GridContainer, SectionTitle } from "~/styles/common";
 import { Article } from "~/types";
 
 type Props = {
@@ -31,16 +30,6 @@ const Title = styled.h1`
 
 const ArticlesSection = styled.section`
   padding-top: 40px;
-`;
-
-const SectionTitle = styled.h3`
-  font-size: 30px;
-  font-weight: bold;
-  margin-bottom: 15px;
-
-  ${up("md")} {
-    font-size: 36px;
-  }
 `;
 
 export const getServerSideProps: GetServerSideProps = async context => {

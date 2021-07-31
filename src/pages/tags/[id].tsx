@@ -3,36 +3,33 @@ import { GetServerSideProps, NextPage } from "next";
 import Image from "next/image";
 import tw from "twin.macro";
 import { ArticleCard } from "~/components/domain/article/ArticleCard";
-import { Container, GridContainer } from "~/styles/common";
+import { Container, GridContainer, SectionTitle } from "~/styles/common";
 import { Tag } from "~/types";
 
 type Props = {
   tag: Tag;
 };
 
-const Root = styled.div`
+const Root = styled.div``;
+
+const TagHeading = styled.header`
   padding-top: 40px;
 `;
 
-const TagHeading = styled.header`
-  padding-bottom: 30px;
-`;
-
 const TagHeadingContainer = styled(Container)`
-  max-width: 960px;
-  margin: 0 auto;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 `;
 
 const TagHeadingTitle = styled.h1`
   padding-left: 10px;
-  font-size: 38px;
+  font-size: 36px;
   font-weight: bold;
 `;
 
 const TagMain = styled.main`
   padding-top: 40px;
-  ${tw`bg-gray-50`}
 `;
 
 const TagMainContainer = styled(Container)`
@@ -57,12 +54,13 @@ const TagPage: NextPage<Props> = ({ tag }) => {
     <Root>
       <TagHeading>
         <TagHeadingContainer>
-          <Image src={tag.icon_path} alt={tag.name} width={55} height={55} />
+          <Image src={tag.icon_path} alt={tag.name} width={60} height={60} />
           <TagHeadingTitle>{tag.name}</TagHeadingTitle>
         </TagHeadingContainer>
       </TagHeading>
       <TagMain>
         <TagMainContainer>
+          <SectionTitle>Articles</SectionTitle>
           <GridContainer>
             {tag.articles.map(article => (
               <ArticleCard key={article.id} article={article} />
