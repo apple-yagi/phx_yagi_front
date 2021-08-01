@@ -11,7 +11,7 @@ type Props = {
 };
 
 const Root = styled.div`
-  padding-top: 40px;
+  padding: 40px 0 30px;
 `;
 
 const CustomContainer = styled(Container)`

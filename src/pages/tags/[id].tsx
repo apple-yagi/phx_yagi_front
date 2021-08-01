@@ -10,11 +10,11 @@ type Props = {
   tag: Tag;
 };
 
-const Root = styled.div``;
-
-const TagHeading = styled.header`
-  padding-top: 40px;
+const Root = styled.div`
+  padding: 40px 0 30px;
 `;
+
+const TagHeading = styled.header``;
 
 const TagHeadingContainer = styled(Container)`
   display: flex;

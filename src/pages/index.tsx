@@ -12,7 +12,7 @@ type Props = {
 const Root = styled.div``;
 
 const ArticlesMain = styled.main`
-  padding-top: 40px;
+  padding: 40px 0 30px;
   ${tw`bg-green-100`}
 `;
 
@@ -21,8 +21,12 @@ const CustomContainer = styled(Container)`
   margin: 0 auto;
 `;
 
+const MoreLinkWrapper = styled.div`
+  text-align: center;
+  margin-top: 30px;
+`;
+
 const MoreLink = styled.a`
-  margin: 20px auto;
   font-size: 16px;
   font-weight: bold;
   ${tw`text-gray-400`}
@@ -51,9 +55,11 @@ const TopPage: NextPage<Props> = ({ articles }) => {
         <CustomContainer>
           <SectionTitle>Articles</SectionTitle>
           <ArticleList articles={articles} />
-          <Link href='/articles'>
-            <MoreLink>記事をもっと見る 👉</MoreLink>
-          </Link>
+          <MoreLinkWrapper>
+            <Link href='/articles'>
+              <MoreLink>記事をもっと見る 👉</MoreLink>
+            </Link>
+          </MoreLinkWrapper>
         </CustomContainer>
       </ArticlesMain>
     </Root>
