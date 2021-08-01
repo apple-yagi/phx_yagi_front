@@ -11,7 +11,7 @@ type Props = {
 
 const Root = styled.div``;
 
-const ArticlesSection = styled.section`
+const ArticlesMain = styled.main`
   padding-top: 40px;
   ${tw`bg-green-100`}
 `;
@@ -47,7 +47,7 @@ export const getServerSideProps: GetServerSideProps = async context => {
 const TopPage: NextPage<Props> = ({ articles }) => {
   return (
     <Root>
-      <ArticlesSection>
+      <ArticlesMain>
         <CustomContainer>
           <SectionTitle>Articles</SectionTitle>
           <ArticleList articles={articles} />
@@ -55,7 +55,7 @@ const TopPage: NextPage<Props> = ({ articles }) => {
             <MoreLink>記事をもっと見る 👉</MoreLink>
           </Link>
         </CustomContainer>
-      </ArticlesSection>
+      </ArticlesMain>
     </Root>
   );
 };

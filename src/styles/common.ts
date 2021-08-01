@@ -2,8 +2,6 @@ import styled from "@emotion/styled";
 import { up } from "styled-breakpoints";
 
 export const Container = styled.div`
-  display: flex;
-  flex-wrap: wrap;
   padding: 0 14px;
 
   ${up("md")} {

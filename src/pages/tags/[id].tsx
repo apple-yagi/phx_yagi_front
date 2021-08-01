@@ -17,6 +17,7 @@ const TagHeading = styled.header`
 `;
 
 const TagHeadingContainer = styled(Container)`
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;

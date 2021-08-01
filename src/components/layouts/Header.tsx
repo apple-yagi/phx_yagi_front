@@ -12,6 +12,7 @@ const Root = styled.header`
 `;
 
 const HeaderContainer = styled(Container)`
+  display: flex;
   height: 100%;
   margin: 0 auto;
 

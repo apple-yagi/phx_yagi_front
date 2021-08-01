@@ -1,10 +1,23 @@
 import { GetStaticProps, NextPage } from "next";
-import { Container } from "@/styles/common";
+import { Container, SectionTitle } from "@/styles/common";
 import { Tag } from "@/types";
+import { styled } from "twin.macro";
+
+import { css } from "@emotion/react";
+import { TagList } from "~/components/domain/tag/TagList";
 
 type Props = {
   tags: Tag[];
 };
+
+const Root = styled.div`
+  padding-top: 40px;
+`;
+
+const CustomContainer = styled(Container)`
+  max-width: 960px;
+  margin: auto;
+`;
 
 export const getStaticProps: GetStaticProps = async context => {
   const tags: Tag[] = await (
@@ -19,16 +32,17 @@ export const getStaticProps: GetStaticProps = async context => {
 
 const TagsPage: NextPage<Props> = ({ tags }) => {
   return (
-    <Container>
-      <ul>
-        {tags.map(tag => (
-          <li key={tag.id}>
-            <img className='inline h-16 w-16 mr-2 mb-5' src={tag.icon_path} />
-            <span>{tag.name}</span>
-          </li>
-        ))}
-      </ul>
-    </Container>
+    <Root>
+      <CustomContainer>
+        <SectionTitle>Popular tags</SectionTitle>
+        <TagList
+          css={css`
+            padding-top: 20px;
+          `}
+          tags={tags}
+        />
+      </CustomContainer>
+    </Root>
   );
 };
 
