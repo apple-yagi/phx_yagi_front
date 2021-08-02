@@ -1,3 +1,4 @@
+import DefaultErrorPage from "next/error";
 import styled from "@emotion/styled";
 import { GetServerSideProps, NextPage } from "next";
 import { ArticleCard } from "~/components/domain/article/ArticleCard";
@@ -7,6 +8,7 @@ import { Article } from "~/types";
 
 type Props = {
   articles: Article[];
+  statusCode?: number;
 };
 
 const Root = styled.div`
@@ -34,7 +36,17 @@ const ArticlesSection = styled.section`
 `;
 
 export const getServerSideProps: GetServerSideProps = async context => {
-  const articles = await (await fetch(`${API_BASE_URL}v1/articles`)).json();
+  const { page } = context.query;
+  console.log(page);
+  const pageNum = page != null ? Number(page) : 1;
+  if (isNaN(pageNum)) return { props: { statusCode: 400 } };
+
+  const articles = await (
+    await fetch(`${API_BASE_URL}v1/articles?offset=${(pageNum - 1) * 20}`)
+  ).json();
+
+  if (!articles.length) return { props: { statusCode: 404 } };
+
   return {
     props: {
       articles
@@ -42,7 +54,9 @@ export const getServerSideProps: GetServerSideProps = async context => {
   };
 };
 
-const ArticlesPage: NextPage<Props> = ({ articles }) => {
+const ArticlesPage: NextPage<Props> = ({ articles, statusCode }) => {
+  if (statusCode) return <DefaultErrorPage statusCode={statusCode} />;
+
   return (
     <Root>
       <CustomContainer>

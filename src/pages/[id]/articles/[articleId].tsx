@@ -12,16 +12,14 @@ export const getServerSideProps: GetServerSideProps = async context => {
   const res = await fetch(
     `${API_BASE_URL}v1/users/${id}/articles/${articleId}`
   );
-  if (res.status !== 200) {
+  if (res.status !== 200)
     return {
       notFound: true
     };
-  }
 
-  const article = await res.json();
   return {
     props: {
-      article
+      article: await res.json()
     }
   };
 };

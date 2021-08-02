@@ -10,16 +10,14 @@ type Props = {
 export const getServerSideProps: GetServerSideProps = async context => {
   const { id } = context.query;
   const res = await fetch(`${API_BASE_URL}v1/users/${id}`);
-  if (res.status !== 200) {
+  if (res.status !== 200)
     return {
       notFound: true
     };
-  }
 
-  const user = await res.json();
   return {
     props: {
-      user
+      user: await res.json()
     }
   };
 };

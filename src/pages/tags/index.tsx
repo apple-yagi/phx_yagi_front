@@ -2,7 +2,6 @@ import { GetStaticProps, NextPage } from "next";
 import { Container, SectionTitle } from "@/styles/common";
 import { Tag } from "@/types";
 import { styled } from "twin.macro";
-
 import { css } from "@emotion/react";
 import { TagList } from "~/components/domain/tag/TagList";
 import { API_BASE_URL } from "~/constants";

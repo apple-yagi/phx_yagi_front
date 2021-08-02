@@ -46,10 +46,10 @@ export const TagList = ({ tags, className }: Props): JSX.Element => {
   return (
     <GridContainer className={className}>
       {tags.map(tag => (
-        <Link key={tag.id} href={`/tags/${tag.id}`}>
+        <Link key={tag.id} href={`/tags/${tag.name}`}>
           <TagItem>
-            <Image src={tag.icon_path} alt={tag.name} width={30} height={30} />
-            <span className='mt-3'>{tag.name}</span>
+            <Image src={tag.iconPath} alt={tag.name} width={30} height={30} />
+            <span className='mt-3'>{tag.displayName}</span>
           </TagItem>
         </Link>
       ))}

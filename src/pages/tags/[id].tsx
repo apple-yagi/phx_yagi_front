@@ -40,10 +40,12 @@ const TagMainContainer = styled(Container)`
 
 export const getServerSideProps: GetServerSideProps = async context => {
   const { id } = context.query;
-  const tag: Tag = await (await fetch(`${API_BASE_URL}v1/tags/${id}`)).json();
+  const res = await fetch(`${API_BASE_URL}v1/tags/${id}`);
+  if (res.status !== 200) return { notFound: true };
+
   return {
     props: {
-      tag
+      tag: await res.json()
     }
   };
 };
@@ -53,8 +55,8 @@ const TagPage: NextPage<Props> = ({ tag }) => {
     <Root>
       <TagHeading>
         <TagHeadingContainer>
-          <Image src={tag.icon_path} alt={tag.name} width={60} height={60} />
-          <TagHeadingTitle>{tag.name}</TagHeadingTitle>
+          <Image src={tag.iconPath} alt={tag.name} width={60} height={60} />
+          <TagHeadingTitle>{tag.displayName}</TagHeadingTitle>
         </TagHeadingContainer>
       </TagHeading>
       <TagMain>

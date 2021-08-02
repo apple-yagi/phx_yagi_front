@@ -21,6 +21,7 @@ export type Article = {
 export type Tag = {
   id: string;
   name: string;
-  icon_path: string;
+  displayName: string;
+  iconPath: string;
   articles: Article[];
 };
