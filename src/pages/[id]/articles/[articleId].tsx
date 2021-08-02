@@ -1,4 +1,5 @@
 import { GetServerSideProps, NextPage } from "next";
+import { API_BASE_URL } from "~/constants";
 import { Container } from "~/styles/common";
 import { Article } from "~/types";
 
@@ -9,7 +10,7 @@ type Props = {
 export const getServerSideProps: GetServerSideProps = async context => {
   const { id, articleId } = context.query;
   const res = await fetch(
-    `http://localhost:4000/api/v1/users/${id}/articles/${articleId}`
+    `${API_BASE_URL}v1/users/${id}/articles/${articleId}`
   );
   if (res.status !== 200) {
     return {

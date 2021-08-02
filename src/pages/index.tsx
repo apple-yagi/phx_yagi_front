@@ -4,6 +4,7 @@ import { Container, SectionTitle } from "~/styles/common";
 import { Article } from "~/types";
 import { ArticleList } from "~/components/domain/article/ArticleList";
 import Link from "next/link";
+import { API_BASE_URL } from "~/constants";
 
 type Props = {
   articles: Article[];
@@ -38,9 +39,7 @@ const MoreLink = styled.a`
 `;
 
 export const getServerSideProps: GetServerSideProps = async context => {
-  const articles = await (
-    await fetch("http://localhost:4000/api/v1/articles")
-  ).json();
+  const articles = await (await fetch(`${API_BASE_URL}v1/articles`)).json();
   return {
     props: {
       articles

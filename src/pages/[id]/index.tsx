@@ -1,4 +1,5 @@
 import { GetServerSideProps, NextPage } from "next";
+import { API_BASE_URL } from "~/constants";
 import { Container } from "~/styles/common";
 import { User } from "~/types";
 
@@ -8,7 +9,7 @@ type Props = {
 
 export const getServerSideProps: GetServerSideProps = async context => {
   const { id } = context.query;
-  const res = await fetch(`http://localhost:4000/api/v1/users/${id}`);
+  const res = await fetch(`${API_BASE_URL}v1/users/${id}`);
   if (res.status !== 200) {
     return {
       notFound: true

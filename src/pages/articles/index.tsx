@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { GetServerSideProps, NextPage } from "next";
 import { ArticleCard } from "~/components/domain/article/ArticleCard";
+import { API_BASE_URL } from "~/constants";
 import { Container, GridContainer, SectionTitle } from "~/styles/common";
 import { Article } from "~/types";
 
@@ -33,9 +34,7 @@ const ArticlesSection = styled.section`
 `;
 
 export const getServerSideProps: GetServerSideProps = async context => {
-  const articles = await (
-    await fetch("http://localhost:4000/api/v1/articles")
-  ).json();
+  const articles = await (await fetch(`${API_BASE_URL}v1/articles`)).json();
   return {
     props: {
       articles

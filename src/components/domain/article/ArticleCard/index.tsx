@@ -85,7 +85,7 @@ export const ArticleCard = ({ article, className }: Props): JSX.Element => {
       </Link>
       <TagList>
         {article.tags.map(tag => (
-          <TagItem>
+          <TagItem key={tag.id}>
             <Link href={`/tags/${tag.id}`}>
               <a>
                 <Image

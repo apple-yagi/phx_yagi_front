@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 import { GetServerSideProps, NextPage } from "next";
 import Image from "next/image";
-import tw from "twin.macro";
 import { ArticleCard } from "~/components/domain/article/ArticleCard";
+import { API_BASE_URL } from "~/constants";
 import { Container, GridContainer, SectionTitle } from "~/styles/common";
 import { Tag } from "~/types";
 
@@ -40,9 +40,7 @@ const TagMainContainer = styled(Container)`
 
 export const getServerSideProps: GetServerSideProps = async context => {
   const { id } = context.query;
-  const tag: Tag = await (
-    await fetch(`http://localhost:4000/api/v1/tags/${id}`)
-  ).json();
+  const tag: Tag = await (await fetch(`${API_BASE_URL}v1/tags/${id}`)).json();
   return {
     props: {
       tag

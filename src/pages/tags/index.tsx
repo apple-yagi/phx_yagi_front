@@ -5,6 +5,7 @@ import { styled } from "twin.macro";
 
 import { css } from "@emotion/react";
 import { TagList } from "~/components/domain/tag/TagList";
+import { API_BASE_URL } from "~/constants";
 
 type Props = {
   tags: Tag[];
@@ -20,9 +21,7 @@ const CustomContainer = styled(Container)`
 `;
 
 export const getStaticProps: GetStaticProps = async context => {
-  const tags: Tag[] = await (
-    await fetch("http://localhost:4000/api/v1/tags")
-  ).json();
+  const tags: Tag[] = await (await fetch(`${API_BASE_URL}v1/tags`)).json();
   return {
     props: {
       tags
