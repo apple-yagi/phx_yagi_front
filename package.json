@@ -13,8 +13,10 @@
     "@types/node": "^14.14.20",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "@uiw/react-md-editor": "^3.4.11",
     "autoprefixer": "^10.2.1",
     "next": "10.0.5",
+    "next-remove-imports": "^1.0.5",
     "postcss": "^8.2.4",
     "react": "17.0.1",
     "react-dom": "17.0.1",
@@ -28,6 +30,7 @@
     "@emotion/styled": "^11.3.0",
     "babel-plugin-emotion": "^11.0.0",
     "babel-plugin-macros": "^3.1.0",
+    "next-compose-plugins": "^2.2.1",
     "styled-breakpoints": "^10.0.1",
     "twin.macro": "^2.6.2"
   },
