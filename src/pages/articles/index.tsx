@@ -37,7 +37,6 @@ const ArticlesSection = styled.section`
 
 export const getServerSideProps: GetServerSideProps = async context => {
   const { page } = context.query;
-  console.log(page);
   const pageNum = page != null ? Number(page) : 1;
   if (isNaN(pageNum)) return { props: { statusCode: 400 } };
 
