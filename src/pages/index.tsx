@@ -1,7 +1,7 @@
 import { GetServerSideProps, NextPage } from "next";
 import tw, { styled } from "twin.macro";
 import { Container, SectionTitle } from "~/styles/common";
-import { Article } from "~/types";
+import { Article, ArticleListResponse } from "~/types";
 import { ArticleList } from "~/components/domain/article/ArticleList";
 import Link from "next/link";
 import { API_BASE_URL } from "~/constants";
@@ -38,11 +38,13 @@ const MoreLink = styled.a`
   }
 `;
 
-export const getServerSideProps: GetServerSideProps = async context => {
-  const articles = await (await fetch(`${API_BASE_URL}v1/articles`)).json();
+export const getServerSideProps: GetServerSideProps = async () => {
+  const res: ArticleListResponse = await (
+    await fetch(`${API_BASE_URL}v1/articles?limit=20`)
+  ).json();
   return {
     props: {
-      articles
+      articles: res.articles
     }
   };
 };

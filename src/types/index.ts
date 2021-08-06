@@ -25,3 +25,8 @@ export type Tag = {
   iconPath: string;
   articles: Article[];
 };
+
+export type ArticleListResponse = {
+  articles: Article[];
+  count: number;
+};
