@@ -20,12 +20,7 @@ export const TagList = ({ tags }: Props): JSX.Element => {
         <li key={tag.id}>
           <Link href={`/tags/${tag.id}`}>
             <a>
-              <Image
-                src={tag.icon_path}
-                alt={tag.name}
-                width={25}
-                height={25}
-              />
+              <Image src={tag.iconPath} alt={tag.name} width={25} height={25} />
             </a>
           </Link>
         </li>
