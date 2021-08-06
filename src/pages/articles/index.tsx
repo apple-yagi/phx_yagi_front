@@ -7,6 +7,7 @@ import { Container, GridContainer, SectionTitle } from "~/styles/common";
 import { Article, ArticleListResponse } from "~/types";
 import Link from "next/link";
 import tw from "twin.macro";
+import { up } from "styled-breakpoints";
 
 type Props = {
   articles: Article[];
@@ -53,9 +54,11 @@ const PageLink = styled.a`
   ${tw`text-gray-400`}
   transition: 0.3s all;
 
-  :hover {
-    box-shadow: 0 3px 4px -2px rgb(33 37 56 / 25%);
-    ${tw`text-gray-800`}
+  ${up("lg")} {
+    :hover {
+      box-shadow: 0 3px 4px -2px rgb(33 37 56 / 25%);
+      ${tw`text-gray-800`}
+    }
   }
 `;
 
