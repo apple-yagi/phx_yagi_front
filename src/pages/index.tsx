@@ -1,4 +1,4 @@
-import { GetServerSideProps, NextPage } from "next";
+import { GetStaticProps, NextPage } from "next";
 import tw, { styled } from "twin.macro";
 import { Container, SectionTitle } from "~/styles/common";
 import { Article, ArticleListResponse } from "~/types";
@@ -38,14 +38,15 @@ const MoreLink = styled.a`
   }
 `;
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const res: ArticleListResponse = await (
     await fetch(`${API_BASE_URL}v1/articles?limit=20`)
   ).json();
   return {
     props: {
       articles: res.articles
-    }
+    },
+    revalidate: 60
   };
 };
 
