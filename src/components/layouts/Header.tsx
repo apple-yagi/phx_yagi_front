@@ -1,6 +1,7 @@
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import Image from "next/image";
+import Link from "next/link";
 import { up } from "styled-breakpoints";
 import { Container } from "~/styles/common";
 import { lg } from "~/styles/vars";
@@ -21,11 +22,12 @@ const HeaderContainer = styled(Container)`
   }
 `;
 
-const HeaderTitle = styled.div`
+const HeaderTitle = styled.a`
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 20px;
+  cursor: pointer;
 `;
 
 const textSmNone = css`
@@ -40,27 +42,29 @@ export const Header = (): JSX.Element => {
   return (
     <Root>
       <HeaderContainer>
-        <HeaderTitle>
-          <Image
-            src='https://cdn.svgporn.com/logos/phoenix.svg'
-            alt='phoenix'
-            width={35}
-            height={35}
-          />
-          <span className='ml-2' css={textSmNone}>
-            Phoenix
-          </span>
-          <div className='mx-1'>✖️</div>
-          <Image
-            src='https://cdn.svgporn.com/logos/nextjs-icon.svg'
-            alt='next'
-            width={35}
-            height={35}
-          />
-          <span className='ml-2' css={textSmNone}>
-            Next.js
-          </span>
-        </HeaderTitle>
+        <Link href='/'>
+          <HeaderTitle>
+            <Image
+              src='https://cdn.svgporn.com/logos/phoenix.svg'
+              alt='phoenix'
+              width={35}
+              height={35}
+            />
+            <span className='ml-2' css={textSmNone}>
+              Phoenix
+            </span>
+            <div className='mx-1'>✖️</div>
+            <Image
+              src='https://cdn.svgporn.com/logos/nextjs-icon.svg'
+              alt='next'
+              width={35}
+              height={35}
+            />
+            <span className='ml-2' css={textSmNone}>
+              Next.js
+            </span>
+          </HeaderTitle>
+        </Link>
       </HeaderContainer>
     </Root>
   );
