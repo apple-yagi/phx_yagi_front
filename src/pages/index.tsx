@@ -5,6 +5,7 @@ import { Article, ArticleListResponse } from "~/types";
 import { ArticleList } from "~/components/domain/article/ArticleList";
 import Link from "next/link";
 import { API_BASE_URL } from "~/constants";
+import { Navigation } from "~/components/layouts/Navigation";
 
 type Props = {
   articles: Article[];
@@ -53,6 +54,7 @@ export const getStaticProps: GetStaticProps = async () => {
 const TopPage: NextPage<Props> = ({ articles }) => {
   return (
     <Root>
+      <Navigation />
       <ArticlesMain>
         <CustomContainer>
           <SectionTitle>Articles</SectionTitle>

@@ -6,7 +6,6 @@ import { ThemeProvider } from "@emotion/react";
 import { theme } from "~/styles/vars";
 import { global } from "~/styles/global";
 import { Header } from "~/components/layouts/Header";
-import { Navigation } from "~/components/layouts/Navigation";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -18,7 +17,6 @@ function MyApp({ Component, pageProps }) {
       <NextNprogress />
       <ThemeProvider theme={theme}>
         <Header />
-        <Navigation />
         <div css={global}>
           <Component {...pageProps} />
         </div>

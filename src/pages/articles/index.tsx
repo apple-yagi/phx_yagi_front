@@ -8,6 +8,8 @@ import { Article, ArticleListResponse } from "~/types";
 import Link from "next/link";
 import tw from "twin.macro";
 import { up } from "styled-breakpoints";
+import { Navigation } from "~/components/layouts/Navigation";
+import { css } from "@emotion/react";
 
 type Props = {
   articles: Article[];
@@ -16,9 +18,7 @@ type Props = {
   statusCode?: number;
 };
 
-const Root = styled.div`
-  padding: 40px 0 30px;
-`;
+const Root = styled.div``;
 
 const CustomContainer = styled(Container)`
   max-width: 960px;
@@ -44,6 +44,7 @@ const PaginationContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 20px 0 40px;
 `;
 
 const PageLink = styled.a`
@@ -100,8 +101,13 @@ const ArticlesPage: NextPage<Props> = ({
 
   return (
     <Root>
+      <Navigation />
       <CustomContainer>
-        <div className='w-full text-center'>
+        <div
+          className='w-full text-center'
+          css={css`
+            padding: 40px 0 30px;
+          `}>
           <Emoji>🗃</Emoji>
           <Title>Articles</Title>
         </div>

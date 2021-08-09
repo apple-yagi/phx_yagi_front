@@ -5,10 +5,14 @@ import { Container } from "~/styles/common";
 import { Article } from "~/types";
 import "@uiw/react-md-editor/dist/markdown-editor.css";
 import "@uiw/react-markdown-preview/dist/markdown.css";
+import styled from "@emotion/styled";
+import { Navigation } from "~/components/layouts/Navigation";
 
 type Props = {
   article: Article;
 };
+
+const Root = styled.div``;
 
 export const getServerSideProps: GetServerSideProps = async context => {
   const { id, articleId } = context.query;
@@ -29,10 +33,13 @@ export const getServerSideProps: GetServerSideProps = async context => {
 
 const ArticlePage: NextPage<Props> = ({ article }) => {
   return (
-    <Container>
-      <h1>{article.title}</h1>
-      <MDEditor.Markdown source={article.content} />
-    </Container>
+    <Root>
+      <Navigation />
+      <Container>
+        <h1>{article.title}</h1>
+        <MDEditor.Markdown source={article.content} />
+      </Container>
+    </Root>
   );
 };
 

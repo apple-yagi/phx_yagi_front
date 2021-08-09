@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { GetServerSideProps, NextPage } from "next";
 import Image from "next/image";
 import { ArticleCard } from "~/components/domain/article/ArticleCard";
+import { Navigation } from "~/components/layouts/Navigation";
 import { API_BASE_URL } from "~/constants";
 import { Container, GridContainer, SectionTitle } from "~/styles/common";
 import { Tag } from "~/types";
@@ -10,13 +11,13 @@ type Props = {
   tag: Tag;
 };
 
-const Root = styled.div`
+const Root = styled.div``;
+
+const TagSection = styled.section`
   padding: 40px 0 30px;
 `;
 
-const TagHeading = styled.header``;
-
-const TagHeadingContainer = styled(Container)`
+const TagHeading = styled(Container)`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -29,11 +30,11 @@ const TagHeadingTitle = styled.h1`
   font-weight: bold;
 `;
 
-const TagMain = styled.main`
+const TagContent = styled.main`
   padding-top: 40px;
 `;
 
-const TagMainContainer = styled(Container)`
+const TagContentContainer = styled(Container)`
   max-width: 960px;
   margin: 0 auto;
 `;
@@ -53,22 +54,23 @@ export const getServerSideProps: GetServerSideProps = async context => {
 const TagPage: NextPage<Props> = ({ tag }) => {
   return (
     <Root>
-      <TagHeading>
-        <TagHeadingContainer>
+      <Navigation />
+      <TagSection>
+        <TagHeading>
           <Image src={tag.iconPath} alt={tag.name} width={60} height={60} />
           <TagHeadingTitle>{tag.displayName}</TagHeadingTitle>
-        </TagHeadingContainer>
-      </TagHeading>
-      <TagMain>
-        <TagMainContainer>
-          <SectionTitle>Articles</SectionTitle>
-          <GridContainer>
-            {tag.articles.map(article => (
-              <ArticleCard key={article.id} article={article} />
-            ))}
-          </GridContainer>
-        </TagMainContainer>
-      </TagMain>
+        </TagHeading>
+        <TagContent>
+          <TagContentContainer>
+            <SectionTitle>Articles</SectionTitle>
+            <GridContainer>
+              {tag.articles.map(article => (
+                <ArticleCard key={article.id} article={article} />
+              ))}
+            </GridContainer>
+          </TagContentContainer>
+        </TagContent>
+      </TagSection>
     </Root>
   );
 };
