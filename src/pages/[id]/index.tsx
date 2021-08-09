@@ -12,12 +12,25 @@ type Props = {
 
 const Root = styled.div``;
 
-const UserProfile = styled.header``;
+const UserProfile = styled.header`
+  padding: 20px 0 30px;
+`;
 
 const UserProfileContaier = styled(Container)`
   max-width: 960px;
   margin: 0 auto;
   display: flex;
+`;
+
+const UserProfileContent = styled.div`
+  padding-left: 20px;
+`;
+
+const UserProfileName = styled.h1`
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 1.3;
+  margin-top: 5px;
 `;
 
 const ArticleSection = styled.section`
@@ -51,9 +64,9 @@ const UserPage: NextPage<Props> = ({ user }) => {
       <UserProfile>
         <UserProfileContaier>
           <Image src={user.photoURL} alt={user.name} width={120} height={120} />
-          <div>
-            <h1>{user.name}</h1>
-          </div>
+          <UserProfileContent>
+            <UserProfileName>{user.name}</UserProfileName>
+          </UserProfileContent>
         </UserProfileContaier>
       </UserProfile>
       <ArticleSection>
