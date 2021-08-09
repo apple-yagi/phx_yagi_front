@@ -1,7 +1,6 @@
-import styled from "@emotion/styled";
 import { GetServerSideProps, NextPage } from "next";
 import Image from "next/image";
-import tw from "twin.macro";
+import tw, { styled } from "twin.macro";
 import { ArticleCard } from "~/components/domain/article/ArticleCard";
 import { API_BASE_URL } from "~/constants";
 import { Container, GridContainer } from "~/styles/common";

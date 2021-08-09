@@ -1,12 +1,11 @@
 import DefaultErrorPage from "next/error";
-import styled from "@emotion/styled";
 import { GetServerSideProps, NextPage } from "next";
 import { ArticleCard } from "~/components/domain/article/ArticleCard";
 import { API_BASE_URL } from "~/constants";
 import { Container, GridContainer, SectionTitle } from "~/styles/common";
 import { Article, ArticleListResponse } from "~/types";
 import Link from "next/link";
-import tw from "twin.macro";
+import tw, { styled } from "twin.macro";
 import { up } from "styled-breakpoints";
 import { Navigation } from "~/components/layouts/Navigation";
 import { css } from "@emotion/react";

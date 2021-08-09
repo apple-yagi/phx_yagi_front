@@ -1,11 +1,11 @@
 import { GetServerSideProps, NextPage } from "next";
 import MDEditor from "@uiw/react-md-editor";
+import "@uiw/react-md-editor/dist/markdown-editor.css";
+import "@uiw/react-markdown-preview/dist/markdown.css";
+import { styled } from "twin.macro";
 import { API_BASE_URL } from "~/constants";
 import { Container } from "~/styles/common";
 import { Article } from "~/types";
-import "@uiw/react-md-editor/dist/markdown-editor.css";
-import "@uiw/react-markdown-preview/dist/markdown.css";
-import styled from "@emotion/styled";
 import { Navigation } from "~/components/layouts/Navigation";
 
 type Props = {

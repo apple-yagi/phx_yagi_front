@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import { styled } from "twin.macro";
 import { GetServerSideProps, NextPage } from "next";
 import Image from "next/image";
 import { ArticleCard } from "~/components/domain/article/ArticleCard";
